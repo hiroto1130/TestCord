@@ -15,9 +15,6 @@ class Collision
 private:
 	float map_x = 128;
 	float map_y = 128;
-
-	float before_x = 100;
-	float before_y = 100;
 	
 	float block_in_distance_x = 0;
 	float block_in_distance_y = 0;

@@ -17,26 +17,19 @@ int Collision::Subtraction(int var1, int var2)
 int Collision::VectorCalculation(int X, int Y)
 {
 
-	float a, b, c, d;
+	float a, b;
 
 	block_in_distance_x = X - map_x;
 	block_in_distance_y = Y - map_y;
 
-	move_distance_x = X - before_x;
-	move_distance_y = Y - before_y;
-
-	a = (block_in_distance_x / move_distance_x) * 100;
-	b = (block_in_distance_y / move_distance_y) * 100;
+	a = (block_in_distance_x / X) * 100;
+	b = (block_in_distance_y / Y) * 100;
 
 	if (a < b)
 	{
 		return LEFT;
 	}
-
-	c = (block_in_distance_x / move_distance_x) * 100;
-    d = (block_in_distance_y / move_distance_y) * 100;
-
-	if (c > d)
+	if (a > b)
 	{
 		return UP;
 	}
