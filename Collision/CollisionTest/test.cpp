@@ -1,54 +1,81 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 
 #include"../Collision/Collision.h"
 
 Collision collision;
  
-// ¬Œ÷ƒpƒ^[ƒ“
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(LeftCase, Test1) {
   EXPECT_EQ(LEFT,collision.VectorCalculation(130,150, DOWNRIGHT));
 }
-// ¸”sƒpƒ^[ƒ“
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(LeftCase, Test2) {
 	EXPECT_EQ(LEFT, collision.VectorCalculation(180, 150, DOWNRIGHT));
 }
-// ¸”sƒpƒ^[ƒ“
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(UpCase, Test3) {
 	EXPECT_EQ(TOP, collision.VectorCalculation(130, 150, DOWNRIGHT));
 }
-// ¬Œ÷ƒpƒ^[ƒ“
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(UpCase, Test4) {
 	EXPECT_EQ(TOP, collision.VectorCalculation(180, 150, DOWNRIGHT));
 }
-// “–‚½‚ç‚È‚¢ƒpƒ^[ƒ“
+// å½“ãŸã‚‰ãªã„ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(NoHitCase, Test5) {
 	EXPECT_EQ(NoHit, collision.VectorCalculation(120, 120, DOWNRIGHT));
 }
 
 // --------------------------------------------------------------------------------- //
 
-// ¬Œ÷ƒpƒ^[ƒ“
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(LeftCase, Test6) {
 	EXPECT_EQ(LEFT, collision.VectorCalculation(140, 100, UPRIGHT));
 }
 
-// ¸”sƒpƒ^[ƒ“
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(LeftCase, Test7) {
 	EXPECT_EQ(LEFT, collision.VectorCalculation(170, 80, UPRIGHT));
 }
 
-// ¸”sƒpƒ^[ƒ“
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(UpCase, Test8) {
 	EXPECT_EQ(BOTTOM, collision.VectorCalculation(140, 100, UPRIGHT));
 }
 
-// ¬Œ÷ƒpƒ^[ƒ“
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(UpCase, Test9) {
 	EXPECT_EQ(BOTTOM, collision.VectorCalculation(170, 80, UPRIGHT));
 }
 
-// “–‚½‚ç‚È‚¢ƒpƒ^[ƒ“
+// å½“ãŸã‚‰ãªã„ãƒ‘ã‚¿ãƒ¼ãƒ³
 TEST(NoHitCase, Test10) {
 	EXPECT_EQ(NoHit, collision.VectorCalculation(120, 60, UPRIGHT));
 }
 
+// --------------------------------------------------------------------------------- //
+
+
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
+TEST(LeftCase, UpLeft1) {
+	EXPECT_EQ(RIGHT, collision.VectorCalculation(160, 100, UPLEFT));
+}
+
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
+TEST(LeftCase, UpLeft2) {
+	EXPECT_EQ(RIGHT, collision.VectorCalculation(130, 80, UPLEFT));
+}
+
+// å¤±æ•—ãƒ‘ã‚¿ãƒ¼ãƒ³
+TEST(UpCase, UpLeft3) {
+	EXPECT_EQ(BOTTOM, collision.VectorCalculation(160, 100, UPLEFT));
+}
+
+// æˆåŠŸãƒ‘ã‚¿ãƒ¼ãƒ³
+TEST(UpCase, UpLeft4) {
+	EXPECT_EQ(BOTTOM, collision.VectorCalculation(130, 80, UPLEFT));
+}
+
+// å½“ãŸã‚‰ãªã„ãƒ‘ã‚¿ãƒ¼ãƒ³
+TEST(NoHitCase, UpLeft5) {
+	EXPECT_EQ(NoHit, collision.VectorCalculation(200, 60, UPLEFT));
+}

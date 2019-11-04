@@ -17,7 +17,7 @@ int Collision::Subtraction(int var1, int var2)
 int Collision::VectorCalculation(int X, int Y, int move_deflection)
 {
 
-	float a, b;
+	float x, y;
 
 	switch (move_deflection)
 	{
@@ -26,37 +26,53 @@ int Collision::VectorCalculation(int X, int Y, int move_deflection)
 		block_in_distance_x = X - map_x;
 		block_in_distance_y = Y - (map_y - 64);
 
-		a = (block_in_distance_x / X) * 100;
-		b = (block_in_distance_y / Y) * 100;
+		x = (block_in_distance_x / X) * 100;
+		y = (block_in_distance_y / Y) * 100;
 
-		if (a < b)
+		if (x < y)
 		{
 			return LEFT;
 		}
-		if (a > b)
+		if (x > y)
 		{
 			return BOTTOM;
 		}
 
 		return NoHit;
 
-		break;
 	case UPLEFT:
-		break;
+
+		block_in_distance_x = (map_x + 64) - X;
+		block_in_distance_y = Y - (map_y - 64);
+
+		x = (block_in_distance_x / X) * 100;
+		y = (block_in_distance_y / Y) * 100;
+
+		if (x < y)
+		{
+			return RIGHT;
+		}
+		if (x > y)
+		{
+			return BOTTOM;
+		}
+
+		return NoHit;
+
 
 	case DOWNRIGHT:
 
 		block_in_distance_x = X - map_x;
 		block_in_distance_y = Y - map_y;
 
-		a = (block_in_distance_x / X) * 100;
-		b = (block_in_distance_y / Y) * 100;
+		x = (block_in_distance_x / X) * 100;
+		y = (block_in_distance_y / Y) * 100;
 
-		if (a < b)
+		if (x < y)
 		{
 			return LEFT;
 		}
-		if (a > b)
+		if (x > y)
 		{
 			return TOP;
 		}
