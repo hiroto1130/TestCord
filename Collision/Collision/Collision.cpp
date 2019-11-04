@@ -14,32 +14,59 @@ int Collision::Subtraction(int var1, int var2)
 	return a;
 }
 
-int Collision::VectorCalculation(int X, int Y)
+int Collision::VectorCalculation(int X, int Y, int move_deflection)
 {
 
-	float a, b, c, d;
+	float a, b;
 
-	block_in_distance_x = X - map_x;
-	block_in_distance_y = Y - map_y;
-
-	move_distance_x = X - before_x;
-	move_distance_y = Y - before_y;
-
-	a = (block_in_distance_x / move_distance_x) * 100;
-	b = (block_in_distance_y / move_distance_y) * 100;
-
-	if (a < b)
+	switch (move_deflection)
 	{
-		return LEFT;
+	case UPRIGHT:
+
+		block_in_distance_x = X - map_x;
+		block_in_distance_y = Y - (map_y - 64);
+
+		a = (block_in_distance_x / X) * 100;
+		b = (block_in_distance_y / Y) * 100;
+
+		if (a < b)
+		{
+			return LEFT;
+		}
+		if (a > b)
+		{
+			return BOTTOM;
+		}
+
+		return NoHit;
+
+		break;
+	case UPLEFT:
+		break;
+
+	case DOWNRIGHT:
+
+		block_in_distance_x = X - map_x;
+		block_in_distance_y = Y - map_y;
+
+		a = (block_in_distance_x / X) * 100;
+		b = (block_in_distance_y / Y) * 100;
+
+		if (a < b)
+		{
+			return LEFT;
+		}
+		if (a > b)
+		{
+			return TOP;
+		}
+
+		return NoHit;
+
+	case DOWNLEFT:
+
+		break;
 	}
 
-	c = (block_in_distance_x / move_distance_x) * 100;
-    d = (block_in_distance_y / move_distance_y) * 100;
-
-	if (c > d)
-	{
-		return UP;
-	}
-
-	return NoHit;
 }
+ 
